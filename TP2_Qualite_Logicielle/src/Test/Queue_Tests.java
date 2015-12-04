@@ -78,6 +78,13 @@ public class Queue_Tests {
 		assertEquals(back, array[array.length-1]);
 	}
 	
+	@Test (expected = IllegalStateException.class)
+	public void testBackFailure() throws IllegalStateException
+	{
+		Queue queue = new Queue();
+		int back = queue.back();
+	}
+	
 	@Test
 	public void testDequeueSuccess() throws IllegalStateException
 	{
