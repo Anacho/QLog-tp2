@@ -34,16 +34,12 @@ public class Stack_Tests {
 		assertArrayEquals(array, newArray);
 	}
 	
-	@Test
+	@Test (expected = IllegalStateException.class)
 	public void testConstructorArrayFailure() throws IllegalStateException {
 		int size = 2;
 		int[] array = { 1, 2, 3, 4 };		
 		
-		try {
-			Stack stack = new Stack(size, array);
-		} catch (IllegalStateException ex) {
-			assertNotNull(ex.getMessage());
-		}
+		Stack stack = new Stack(size, array);
 	}
 
 	@Test
@@ -98,27 +94,35 @@ public class Stack_Tests {
 		assertFalse(stack.isEmpty());
 	}
 
-	@Test
+	@Test 
 	public void testPushSuccess() throws IllegalStateException {
 		int size = 3;
-		Stack stack = new Stack(size);
+		int[] array = {1, 2};
+		Integer[] arrayFinal1 = {10, null, null};
+		Integer[] arrayFinal2 = {1,2,10};
+		
+		Stack stack1 = new Stack(size);
+		Stack stack2 = new Stack(size, array);
+		
 		try {
-			stack.push(10);
+			stack1.push(10);
+			stack2.push(10);
+			
+			assertArrayEquals(arrayFinal1, stack1.getStackInt());
+			assertArrayEquals(arrayFinal2, stack2.getStackInt());
 		} catch (IllegalStateException ex) {
 			assertNull(ex.getMessage());
 		}
 	}
 
-	@Test
+	@Test (expected = IllegalStateException.class)
 	public void testPushFailure() throws IllegalStateException {
 		int size = 3;
 		int[] array = { 1, 2, 3 };
 		Stack stack = new Stack(size, array);
-		try {
-			stack.push(10);
-		} catch (IllegalStateException ex) {
-			assertNotNull(ex.getMessage());
-		}
+		
+		stack.push(10);
+		
 	}
 
 	@Test
@@ -133,15 +137,13 @@ public class Stack_Tests {
 		}
 	}
  
-	@Test
+	@Test (expected = IllegalStateException.class)
 	public void testHeadFailure() throws IllegalStateException {
 		int size = 3;
 		Stack stack = new Stack(size);
-		try {
-			stack.head();
-		} catch (IllegalStateException ex) {
-			assertNotNull(ex.getMessage());
-		}
+
+		stack.head();
+		
 	}
 
 	@Test
@@ -156,14 +158,11 @@ public class Stack_Tests {
 		}
 	}
 
-	@Test
+	@Test (expected = IllegalStateException.class)
 	public void testPopFailure() throws IllegalStateException {
 		int size = 3;
 		Stack stack = new Stack(size);
-		try {
-			stack.pop();
-		} catch (IllegalStateException ex) {
-			assertNotNull(ex.getMessage());
-		}
+		
+		stack.pop();
 	}
 }
