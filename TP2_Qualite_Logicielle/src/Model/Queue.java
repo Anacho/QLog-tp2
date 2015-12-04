@@ -141,7 +141,23 @@ public class Queue implements IQueue {
 	
 	@Override
 	public int back() throws IllegalStateException {
-		return input.head();
+		if(!isEmpty())
+		{
+			// problem is input is empty
+			// solution : refill
+			if(input.isEmpty())
+			{
+				// must refill input
+				while(!output.isEmpty())
+				{
+					input.push(output.head());
+					output.pop();
+				}
+			}
+			// no problem or problem solved
+			return input.head();
+		}
+		else throw new IllegalStateException("Queue is empty.");
 	}
 	
 }
