@@ -6,6 +6,8 @@ public interface IQueue {
 	public int head() throws IllegalStateException;
 	int getNumberOfElements();
 	int getSize();
+	Stack getInput();
+	Stack getOutput();
 	boolean isFull();
 	boolean isEmpty();
 	int back() throws IllegalStateException;

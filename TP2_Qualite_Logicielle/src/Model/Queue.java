@@ -39,6 +39,16 @@ public class Queue implements IQueue {
 	}
 	
 	@Override
+	public Stack getInput(){
+		return this.input;
+	}
+	
+	@Override
+	public Stack getOutput(){
+		return this.output;
+	}
+	
+	@Override
 	public boolean isFull() {
 		if(numberOfElements == size)
 			return true;
