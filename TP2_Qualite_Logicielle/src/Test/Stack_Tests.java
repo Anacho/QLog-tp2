@@ -29,7 +29,7 @@ public class Stack_Tests {
 		Stack stack = new Stack(size, array);
 		int[] newArray = new int[stack.getNumberOfElements()];
 		for (int i = 0; i < array.length; i++) {
-			newArray[i] = stack.getStackInt()[i];
+			newArray[array.length-1-i] = stack.getStackInt()[i];
 		}
 		assertArrayEquals(array, newArray);
 	}

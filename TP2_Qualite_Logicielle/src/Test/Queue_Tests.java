@@ -39,7 +39,7 @@ public class Queue_Tests {
 		int[] newArray = new int[queue.getNumberOfElements()];
 		
 		for(int i=0; i<newArray.length; i++){
-			newArray[i] = queue.getInput().getStackInt()[i];
+			newArray[newArray.length-1-i] = queue.getInput().getStackInt()[i];
 		}
 		
 		assertEquals(size, queue.getInput().getStackInt().length);
@@ -48,7 +48,38 @@ public class Queue_Tests {
 	}
 	
 	@Test
-	public void testDequeue() throws IllegalStateException
+	public void testHeadSuccess() throws IllegalStateException
+	{
+		int size = 6;
+		int[] array = {1, 2, 3};
+		
+		Queue queue = new Queue(size, array);
+		int head = queue.head();
+		
+		assertEquals(head, array[0]);
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testHeadFailure() throws IllegalStateException
+	{
+		Queue queue = new Queue();
+		int head = queue.head();
+	}
+	
+	@Test
+	public void testBackSuccess() throws IllegalStateException
+	{
+		int size = 6;
+		int[] array = {1, 2, 3};
+		
+		Queue queue = new Queue(size, array);
+		int back = queue.back();
+		
+		assertEquals(back, array[array.length-1]);
+	}
+	
+	@Test
+	public void testDequeueSuccess() throws IllegalStateException
 	{
 		int size = 6;
 		int[] array = {1, 2, 3};
@@ -61,10 +92,39 @@ public class Queue_Tests {
 		for(int i=0; i<newArray.length; i++){
 			newArray[i] = queue.getOutput().getStackInt()[i];
 		}
-		int[] arr = {2, 1};
+		
+		int[] arr = {2, 3};
 		
 		assertEquals(array.length-1, queue.getOutput().getNumberOfElements());
 		assertEquals(0, queue.getInput().getNumberOfElements());
 		assertArrayEquals(arr, newArray);
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testDequeueFailure() throws IllegalStateException
+	{
+		int size = 6;
+		Queue queue = new Queue(size);
+		queue.Dequeue();
+	}
+	
+	@Test
+	public void testEnqueueSuccess() throws IllegalStateException
+	{
+		int size = 6;
+		Queue queue = new Queue(size);
+		queue.Enqueue(1);
+		
+		assertEquals(queue.back(), 1);
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testEnqueueFailure() throws IllegalStateException
+	{
+		int size = 3;
+		int[] array = {1, 2, 3};
+		
+		Queue queue = new Queue(size, array);
+		queue.Enqueue(10);
 	}
 }
