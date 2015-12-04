@@ -99,7 +99,7 @@ public class Stack_Tests {
 		int size = 3;
 		int[] array = {1, 2};
 		Integer[] arrayFinal1 = {10, null, null};
-		Integer[] arrayFinal2 = {1,2,10};
+		Integer[] arrayFinal2 = {10,2,1};
 		
 		Stack stack1 = new Stack(size);
 		Stack stack2 = new Stack(size, array);
@@ -130,11 +130,8 @@ public class Stack_Tests {
 		int size = 3;
 		int[] array = { 1, 2 };
 		Stack stack = new Stack(size, array);
-		try {
-			stack.head();
-		} catch (IllegalStateException ex) {
-			assertNull(ex.getMessage());
-		}
+		
+		stack.head();
 	}
  
 	@Test (expected = IllegalStateException.class)
@@ -151,11 +148,9 @@ public class Stack_Tests {
 		int size = 3;
 		int[] array = { 1, 2, 3 };
 		Stack stack = new Stack(size, array);
-		try {
-			stack.pop();
-		} catch (IllegalStateException ex) {
-			assertNull(ex.getMessage());
-		}
+		
+		stack.pop();
+		
 	}
 
 	@Test (expected = IllegalStateException.class)
