@@ -42,6 +42,29 @@ public class Queue_Tests {
 			newArray[i] = queue.getInput().getStackInt()[i];
 		}
 		
-		// A COMPLETER
+		assertEquals(size, queue.getInput().getStackInt().length);
+		assertEquals(size, queue.getOutput().getStackInt().length);
+		assertArrayEquals(newArray, array);
+	}
+	
+	@Test
+	public void testDequeue() throws IllegalStateException
+	{
+		int size = 6;
+		int[] array = {1, 2, 3};
+		
+		Queue queue = new Queue(size, array);
+		
+		queue.Dequeue();
+		int[] newArray = new int[queue.getNumberOfElements()];
+		
+		for(int i=0; i<newArray.length; i++){
+			newArray[i] = queue.getOutput().getStackInt()[i];
+		}
+		int[] arr = {2, 1};
+		
+		assertEquals(array.length-1, queue.getOutput().getNumberOfElements());
+		assertEquals(0, queue.getInput().getNumberOfElements());
+		assertArrayEquals(arr, newArray);
 	}
 }
