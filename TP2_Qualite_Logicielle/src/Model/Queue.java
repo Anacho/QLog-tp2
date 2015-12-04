@@ -115,6 +115,7 @@ public class Queue implements IQueue {
 			}
 			// no problem or problem solved
 			output.pop();
+			numberOfElements--;
 		}
 		else throw new IllegalStateException("Queue is empty.");
 	}
