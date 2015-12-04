@@ -24,7 +24,7 @@ public class Stack implements IStack {
 		this.size = size;
 		stackInt = new Integer[size];
 		if(array.length > size)
-			throw new IllegalStateException();
+			throw new IllegalStateException("Array length superior to size.");
 		else for(int i = 0 ; i < array.length ; i++)
 		{
 			stackInt[i] = array[i];
@@ -72,7 +72,7 @@ public class Stack implements IStack {
 			for(int i = numberOfElements - 1; i >= 0; i--)
 			{
 				stackInt[i+1] = stackInt[i];
-			}
+			} 
 			stackInt[0] = x;
 			numberOfElements ++;
 		}

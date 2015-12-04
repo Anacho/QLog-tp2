@@ -8,7 +8,7 @@ import Model.IllegalStateException;
 import Model.Stack;
 
 public class Stack_Tests {
-
+ 
 	@Test
 	public void testConstructorDefault() {
 		Stack stack = new Stack();
@@ -32,6 +32,18 @@ public class Stack_Tests {
 			newArray[i] = stack.getStackInt()[i];
 		}
 		assertArrayEquals(array, newArray);
+	}
+	
+	@Test
+	public void testConstructorArrayFailure() throws IllegalStateException {
+		int size = 2;
+		int[] array = { 1, 2, 3, 4 };		
+		
+		try {
+			Stack stack = new Stack(size, array);
+		} catch (IllegalStateException ex) {
+			assertNotNull(ex.getMessage());
+		}
 	}
 
 	@Test
@@ -120,7 +132,7 @@ public class Stack_Tests {
 			assertNull(ex.getMessage());
 		}
 	}
-
+ 
 	@Test
 	public void testHeadFailure() throws IllegalStateException {
 		int size = 3;
