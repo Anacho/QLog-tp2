@@ -1,10 +1,10 @@
 package Model;
 
 public class Queue implements IQueue {
-	protected Stack input;
-	protected Stack output;
-	protected int size = 6;
-	protected int numberOfElements = 0;
+	private Stack input;
+	private Stack output;
+	private int size = 6;
+	private int numberOfElements = 0;
 	
 	public Queue()
 	{

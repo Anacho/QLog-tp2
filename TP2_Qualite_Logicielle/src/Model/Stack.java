@@ -1,9 +1,9 @@
 package Model;
 
 public class Stack implements IStack {
-	protected Integer[] stackInt;
-	protected int size = 6;
-	protected int numberOfElements = 0;
+	private Integer[] stackInt;
+	private int size = 6;
+	private int numberOfElements = 0;
 	
 	public Stack()
 	{
