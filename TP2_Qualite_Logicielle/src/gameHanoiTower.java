@@ -15,7 +15,7 @@ public class gameHanoiTower {
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Welcome to Tower of Hanoi (by Debesson & Isautier).");
-		System.out.println("First, give me the size of your towers. It must be a positive integer greater than 3.");
+		System.out.println("First, give me the size of your towers. It must be a positive integer striclty greater than 2.");
 		try {
 			size = scanner.nextInt();
 		}
