@@ -20,6 +20,10 @@ public class HanoiTower {
 		}
 	}
 	
+	public Stack getTower(int i){
+		return this.tower[i];
+	}
+	
 	public void move(int towerDepart, int towerArrival) throws IllegalStateException
 	{
 		if(!tower[towerDepart].isEmpty())
