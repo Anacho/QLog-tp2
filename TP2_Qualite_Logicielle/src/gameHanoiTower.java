@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Model.HanoiTower;
@@ -15,11 +16,23 @@ public class gameHanoiTower {
 		
 		System.out.println("Welcome to Tower of Hanoi (by Debesson & Isautier).");
 		System.out.println("First, give me the size of your towers. It must be a positive integer greater than 3.");
-		size = scanner.nextInt();
+		try {
+			size = scanner.nextInt();
+		}
+		catch(InputMismatchException ex)
+		{
+			scanner.next();
+		}
+		
 		while(size < 3)
 		{
 			System.out.println("Well, your input does not match the criterias. Try again.");
-			size = scanner.nextInt();
+			try {
+				size = scanner.nextInt();
+			}
+			catch (InputMismatchException ex){
+				scanner.next();
+			}
 		}
 		
 		System.out.println("Thank you.");
@@ -27,21 +40,47 @@ public class gameHanoiTower {
 		System.out.println("Let's start! Your goal is to move all disks, one by one from Tower n°1 to Tower n°3. One disk cannot be placed on a smaller one.");
 		while(!hanoi.checkVictory())
 		{
+			depart = 0;
+			arrival = 0;
+			
 			hanoi.print();
 			System.out.println("Where do you want to pick a disk? (1, 2, 3)");
-			depart = scanner.nextInt();
+			try {
+				depart = scanner.nextInt();
+			}
+			catch (InputMismatchException ex){
+				scanner.next();
+			}
+			
 			while(depart > 3 || depart < 1)
 			{
 				System.out.println("Well, your input does not match the criterias. Try again.");
-				depart = scanner.nextInt();
+				try {
+					depart = scanner.nextInt();
+				}
+				catch (InputMismatchException ex){
+					scanner.next();
+				}
 			}
 			
 			System.out.println("Great! Where do you want to place it? (1, 2, 3) It must be a different than the one you just picked.");
-			arrival = scanner.nextInt();
+			
+			try {
+				arrival = scanner.nextInt();
+			}
+			catch (InputMismatchException ex){
+				scanner.next();
+			}
+			
 			while(arrival > 3 || arrival < 1 || depart == arrival)
 			{
 				System.out.println("Well, your input does not match the criterias. Try again.");
-				arrival = scanner.nextInt();
+				try {
+					arrival = scanner.nextInt();
+				}
+				catch (InputMismatchException ex){
+					scanner.next();
+				}
 			}
 			try
 			{
