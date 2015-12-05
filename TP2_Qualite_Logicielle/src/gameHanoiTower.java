@@ -1,16 +1,60 @@
+import java.util.Scanner;
+
 import Model.HanoiTower;
 import Model.IllegalStateException;
 
 public class gameHanoiTower {
 
 	public static void main(String[] args) throws IllegalStateException {
-		// TODO Auto-generated method stub
-		HanoiTower hanoi = new HanoiTower(5);
+		
+		int size = 0;
+		int depart = 0;
+		int arrival = 0;
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Welcome to Tower of Hanoi (by Debesson & Isautier).");
+		System.out.println("First, give me the size of your towers. It must be a positive integer greater than 3.");
+		size = scanner.nextInt();
+		while(size < 3)
+		{
+			System.out.println("Well, your input does not match the criterias. Try again.");
+			size = scanner.nextInt();
+		}
+		
+		System.out.println("Thank you.");
+		HanoiTower hanoi = new HanoiTower(size);
+		System.out.println("Let's start! Your goal is to move all disks, one by one from Tower n°1 to Tower n°3. One disk cannot be placed on a smaller one.");
+		while(!hanoi.checkVictory())
+		{
+			hanoi.print();
+			System.out.println("Where do you want to pick a disk? (1, 2, 3)");
+			depart = scanner.nextInt();
+			while(depart > 3 || depart < 1)
+			{
+				System.out.println("Well, your input does not match the criterias. Try again.");
+				depart = scanner.nextInt();
+			}
+			
+			System.out.println("Great! Where do you want to place it? (1, 2, 3) It must be a different than the one you just picked.");
+			arrival = scanner.nextInt();
+			while(arrival > 3 || arrival < 1 || depart == arrival)
+			{
+				System.out.println("Well, your input does not match the criterias. Try again.");
+				arrival = scanner.nextInt();
+			}
+			try
+			{
+				hanoi.move(depart-1, arrival-1);
+				System.out.println("Great! Keep doing this!");
+			}
+			catch(IllegalStateException ise)
+			{
+				System.out.println(ise.getMessage());
+			}
+		}
 		hanoi.print();
-		hanoi.move(0, 2);
-		hanoi.print();
-		hanoi.move(0, 1);
-		hanoi.print();
+		System.out.println("You beat the game! Congrats!");
 	}
 
 }

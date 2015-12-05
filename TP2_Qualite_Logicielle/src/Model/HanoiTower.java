@@ -7,7 +7,7 @@ public class HanoiTower {
 	public HanoiTower(int size) throws IllegalStateException
 	{
 		this.size = size;
-		tower = new Stack[size];
+		tower = new Stack[3];
 		
 		for(int i = 0 ; i < 3 ; i++)
 		{
@@ -42,15 +42,20 @@ public class HanoiTower {
 	
 	public boolean checkVictory()
 	{
-		Integer[] array = tower[2].getStackInt();
-		for(int i = 0; i<size; i++)
+		if(tower[2].isFull())
 		{
-			if(array[i] != i+1)
+			Integer[] array = tower[2].getStackInt();
+			for(int i = 0; i<size; i++)
 			{
-				return false;
+				if(array[i] != i+1)
+				{
+					return false;
+				}
 			}
+			return true;
 		}
-		return true;
+		else return false;
+		
 	}
 	
 	public void print() throws IllegalStateException
@@ -71,9 +76,5 @@ public class HanoiTower {
 			}
 			System.out.println();
 		}
-		
-		System.out.println();
-		System.out.println();
-		System.out.println();
 	}
 }
