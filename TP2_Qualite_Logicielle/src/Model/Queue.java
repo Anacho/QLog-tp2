@@ -68,6 +68,7 @@ public class Queue implements IQueue {
 		if(!isFull())
 		{
 			// problem is input is full
+			// this case is not supposed to happen. Code useless but kept for personnal interest
 			if(input.isFull())
 			{
 				// push to output

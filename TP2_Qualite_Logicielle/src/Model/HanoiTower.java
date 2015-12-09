@@ -63,6 +63,9 @@ public class HanoiTower {
 			Integer[] array = tower[2].getStackInt();
 			for(int i = 0; i<size; i++)
 			{
+				// this case is not supposed to happen but the check is implemented.
+				// a disk cannot be on a smaller one, so if the last tower is full, it should be in the right order
+				// with this code, it is not possible to replicate this case and to test it.
 				if(array[i] != i+1)
 				{
 					return false;
@@ -74,6 +77,7 @@ public class HanoiTower {
 		
 	}
 	
+	// fonction d'affichage non testée
 	public void print() throws IllegalStateException
 	{
 		int[] step = { 0, 0, 0};

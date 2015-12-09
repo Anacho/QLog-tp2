@@ -38,10 +38,12 @@ public class gameHanoiTower {
 		System.out.println("Thank you.");
 		HanoiTower hanoi = new HanoiTower(size);
 		
+		//AutoSolve mode
 		hanoi.print();
 		System.out.println();
 		hanoi.autoMove(size, 0, 2, 1);
 		
+		//Play mode
 		/*System.out.println("Let's start! Your goal is to move all disks, one by one from Tower n°1 to Tower n°3. One disk cannot be placed on a smaller one.");
 		while(!hanoi.checkVictory())
 		{

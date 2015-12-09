@@ -89,11 +89,16 @@ public class Queue_Tests {
 		int back = queue.back();
 	}
 	
-	@Test (expected = IllegalStateException.class)
-	public void testBackFailureInputEmpty() throws IllegalStateException
+	@Test
+	public void testBackInputEmpty() throws IllegalStateException
 	{
-		Queue queue = new Queue();
-		TODO
+		int size = 6;
+		int[] array = {1, 2, 3};
+		Queue queue = new Queue(size, array);
+		queue.Dequeue();
+		int back = queue.back();
+		
+		assertEquals(back, 3);
 	}
 	
 	@Test
@@ -144,17 +149,5 @@ public class Queue_Tests {
 		
 		Queue queue = new Queue(size, array);
 		queue.Enqueue(10);
-	}
-	
-	@Test (expected = IllegalStateException.class)
-	public void testEnqueueFailureInputFullOutputEmpty() throws IllegalStateException
-	{
-		TODO
-	}
-	
-	@Test (expected = IllegalStateException.class)
-	public void testEnqueueFailureInputFullOutputNotEmpty() throws IllegalStateException
-	{
-		TODO
 	}
 }
