@@ -24,6 +24,18 @@ public class HanoiTower {
 		return this.tower[i];
 	}
 	
+	public void autoMove(int number, int from, int to, int via) throws IllegalStateException
+	{
+		if(number > 0)
+		{
+			autoMove(number-1, from, via, to);
+			move(from, to);
+			print();
+			System.out.println();
+			autoMove(number-1, via, to, from);
+		}
+	}
+	
 	public void move(int towerDepart, int towerArrival) throws IllegalStateException
 	{
 		if(!tower[towerDepart].isEmpty())
