@@ -103,4 +103,68 @@ public class Hanoi_Tests {
 		assertFalse(ht.checkVictory());
 	}
 	
+	@Test
+	public void autoMoveTest() throws IllegalStateException {
+		int size=5;
+		
+		int[] array = {5,4,3,2,1};
+		int[] arrayEmpty = {};
+		
+		HanoiTower ht = new HanoiTower(size);
+		
+		Stack stackFull = new Stack(size, array);
+		Stack stackEmpty = new Stack(size, arrayEmpty);
+		
+		
+		ht.autoMove(size, 0, 2, 1);
+
+		assertArrayEquals(stackEmpty.getStackInt(), ht.getTower(0).getStackInt());
+		assertArrayEquals(stackEmpty.getStackInt(), ht.getTower(1).getStackInt());
+		assertArrayEquals(stackFull.getStackInt(), ht.getTower(2).getStackInt());
+	}
+	
+	@Test
+	public void autoMoveEmptyTest() throws IllegalStateException {
+		int size=0;
+		
+		HanoiTower ht = new HanoiTower(size);
+		
+		int[] arrayEmpty = {};
+		Stack stackEmpty = new Stack(size, arrayEmpty);
+		
+		
+		ht.autoMove(size, 0, 2, 1);
+
+		assertArrayEquals(stackEmpty.getStackInt(), ht.getTower(0).getStackInt());
+		assertArrayEquals(stackEmpty.getStackInt(), ht.getTower(1).getStackInt());
+		assertArrayEquals(stackEmpty.getStackInt(), ht.getTower(2).getStackInt());
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void autoMoveFailure() throws IllegalStateException {
+		int size=5;
+		
+		HanoiTower ht = new HanoiTower(size);
+		
+		ht.autoMove(size, 2, 0, 2);
+	}
+	
+	@Test(expected=IllegalStateException.class)
+	public void autoMoveTooBig() throws IllegalStateException {
+		int size = 5;
+		
+		HanoiTower ht = new HanoiTower(size);
+		
+		ht.autoMove(size+1, 0, 2, 1);
+	}
+	
+	@Test(expected=ArrayIndexOutOfBoundsException.class)
+	public void autoMoveOutOfBounds() throws ArrayIndexOutOfBoundsException, IllegalStateException {
+		int size=5;
+		
+		HanoiTower ht = new HanoiTower(size);
+		
+		ht.autoMove(size, 17, 12, -10);
+	}
+	
 }

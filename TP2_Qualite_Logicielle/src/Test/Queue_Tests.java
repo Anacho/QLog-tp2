@@ -2,14 +2,11 @@ package Test;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-
 import Model.Queue;
 
 import org.junit.Test;
 
 import Model.IllegalStateException;
-import Model.Stack;
 
 public class Queue_Tests {
 	
@@ -48,6 +45,13 @@ public class Queue_Tests {
 	}
 	
 	@Test
+	public void testGetSize() {
+		Queue queue = new Queue();
+		
+		assertEquals(6, queue.getSize());
+	}
+	
+	@Test
 	public void testHeadSuccess() throws IllegalStateException
 	{
 		int size = 6;
@@ -83,6 +87,13 @@ public class Queue_Tests {
 	{
 		Queue queue = new Queue();
 		int back = queue.back();
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testBackFailureInputEmpty() throws IllegalStateException
+	{
+		Queue queue = new Queue();
+		TODO
 	}
 	
 	@Test
@@ -126,12 +137,24 @@ public class Queue_Tests {
 	}
 	
 	@Test (expected = IllegalStateException.class)
-	public void testEnqueueFailure() throws IllegalStateException
+	public void testEnqueueFailureTooSmall() throws IllegalStateException
 	{
 		int size = 3;
 		int[] array = {1, 2, 3};
 		
 		Queue queue = new Queue(size, array);
 		queue.Enqueue(10);
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testEnqueueFailureInputFullOutputEmpty() throws IllegalStateException
+	{
+		TODO
+	}
+	
+	@Test (expected = IllegalStateException.class)
+	public void testEnqueueFailureInputFullOutputNotEmpty() throws IllegalStateException
+	{
+		TODO
 	}
 }
